@@ -132,4 +132,19 @@ class Database{
   public function getPrice($table,$column, $price){
     return $this->action('SELECT *', $table, [$column, '<', $price]);
   }
+
+
+  public function action1($action, $table, $column, $min, $max){
+    
+    $sql = "{$action} FROM {$table} WHERE {$column}>={$min} AND {$column}<={$max}";
+    if(!$this->query($sql)->error()){
+      return $this;
+    }
+    
+    return false;  
+  }
+
+  public function getBetweenPrice($table, $column, $min, $max){
+    return $this->action1("SELECT *", $table, $column, $min, $max);
+  }
 }

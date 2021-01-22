@@ -17,7 +17,8 @@
       require_once('init.php');
 
       $transformer = new Transformer;
-      $transformers = $transformer->getPrice('transformers', 'price', $_POST['min']);
+      // $transformers = $transformer->getPrice('transformers', 'price', $_POST['min']);
+      $transformers = $transformer->getBetweenPrice('transformers', 'price', $_POST['min'], $_POST['max']);
       require_once('helpers.php');
     ?>
     

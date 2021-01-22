@@ -18,7 +18,7 @@
     <input type="number" class="form-control" id="min-price" name="min-price" placeholder="1000" required>
   </div>
 
-  <!-- <div class="form-group mb-2 ml-2">
+  <div class="form-group mb-2 ml-2">
     <strong>до</strong>
   </div>
 
@@ -28,7 +28,7 @@
 
   <div class="form-group mb-2 mr-2">
     <strong>руббей и на складе </strong>
-  </div> -->
+  </div>
 
   <!-- <div class="form-group mb-2">
     <select id="max_min" name="max_min" class="form-control">

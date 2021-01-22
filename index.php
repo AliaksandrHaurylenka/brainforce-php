@@ -67,7 +67,9 @@
       $("#ajaxdata").load("table.php");
       $("#filter").click(function(){
         let min_price = $("#min-price").val();
-        $("#ajaxdata").load("search_table.php", {min: min_price});
+        let max_price = $("#max-price").val();
+        // $("#ajaxdata").load("search_table.php", {min: min_price});
+        $("#ajaxdata").load("search_table.php", {min: min_price, max: max_price});
       })
       $("#refresh").click(function(){
         $("#ajaxdata").load("table.php");

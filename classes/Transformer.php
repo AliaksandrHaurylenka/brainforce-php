@@ -33,4 +33,9 @@ class Transformer {
     return $this->db->getPrice($table, $column, $price)->results();
   }
 
+
+  public function getBetweenPrice($table, $column, $min, $max){
+    return $this->db->getBetweenPrice($table, $column, $min, $max)->results();
+  }
+
 }
