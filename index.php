@@ -1,4 +1,7 @@
 <?php
+  // header('Location: http://brainforce-php.test');
+  // header('Location: http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].'?success');
+  // exit();
 
   require_once('init.php');
 
@@ -27,12 +30,50 @@
   
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
   <title>Brain Force</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+  <script>
+    // $(document).ready(function(){
+    //   $("#ajaxdata").load("table.php");
+    //   $("#price").change(function(){
+    //     let selected = $(this).val();
+    //     $("#ajaxdata").load("search_table.php", {selected_price: selected});
+    //   })
+    //   $("#filter").click(function(){
+    //     $("#ajaxdata").load("table.php");
+    //   })
+    // })
+
+
+    // $(document).ready(function(){
+    //   $("#ajaxdata").load("table.php");
+    //   $("#filter").click(function(){
+    //     let selected = $("#price").val();
+    //     $("#ajaxdata").load("search_table.php", {selected_price: selected});
+    //   })
+    //   $("#refresh").click(function(){
+    //     $("#ajaxdata").load("table.php");
+    //   })
+    // })
+
+
+    $(document).ready(function(){
+      $("#ajaxdata").load("table.php");
+      $("#filter").click(function(){
+        let min_price = $("#min-price").val();
+        $("#ajaxdata").load("search_table.php", {min: min_price});
+      })
+      $("#refresh").click(function(){
+        $("#ajaxdata").load("table.php");
+      })
+    })
+  </script>
 </head>
 <body>
 
@@ -41,7 +82,7 @@
       <div class="col-md-12">
         <h2>Трансформаторы</h2>
 
-
+        
         <div>
           Всего товаров на складе №1 <strong><?= quantityProduct('quantity_in_stock1') ?> шт.</strong>
         </div>
@@ -55,95 +96,10 @@
           Средняя цена товара оптом <strong><?= averagePrice('wholesale_price') ?> руб.</strong>
         </div>
 
+        <? require_once('serch.php') ?>
 
-        <!-- <div class="row mt-5"> -->
-          <!-- <p class="col-5"><strong>Показать товары, у которых</strong></p> -->
-          <form class="form-inline mt-5 mb-3" action="?" method="post">
-            <div class="form-group mb-2  mr-2">
-              <strong>Показать товары, у которых</strong>
-            </div>
-
-            <div class="form-group mb-2">
-              <select id="price" name="price" class="form-control">
-                <option value="price" selected>Розничная цена</option>
-                <option value="wholesale_price">Оптовая цена</option>
-              </select>
-            </div>
-
-            <div class="form-group mb-2 ml-2">
-              <strong>от</strong>
-            </div>
-
-            <div class="form-group mx-sm-3 mb-2">
-              <input type="number" class="form-control" id="min-price" name="min_price" placeholder="1000" required>
-            </div>
-
-            <div class="form-group mb-2 ml-2">
-              <strong>до</strong>
-            </div>
-
-            <div class="form-group mx-sm-3 mb-2">
-              <input type="number" class="form-control" id="max-price" name="max_price" placeholder="3000" required>
-            </div>
-
-            <div class="form-group mb-2 mr-2">
-              <strong>руббей и на складе </strong>
-            </div>
-
-            <div class="form-group mb-2">
-              <select id="max_min" name="max_min" class="form-control">
-                <option value="max" selected>Более</option>
-                <option value="min">Менее</option>
-              </select>
-            </div>
-
-            <div class="form-group mx-sm-3 mb-2">
-              <input type="number" class="form-control" id="quantity" name="quantity" placeholder="20" required>
-            </div>
-
-            <button type="submit" name="filter" class="btn btn-primary mb-2">Показать товары</button>
-          </form>
-        <!-- </div> -->
+        <div id="ajaxdata"></div>
         
-
-
-        <table class="table">
-          <thead>
-            <tr>
-              <!-- <th>ID</th> -->
-              <th>Имя</th>
-              <th>Стоимость, руб</th>
-              <th>Стоимость опт, руб</th>
-              <th>Наличие на складе 1, шт</th>
-              <th>Наличие на складе 2, шт</th>
-              <th>Страна производства</th>
-              <th>Примечание</th>
-            </tr>
-          </thead>
-
-
-          <tbody>
-          <?php foreach ($transformers as $transformer): ?>
-            <tr>          
-              <!-- <th scope="row"><?= $transformer->id; ?></th> -->
-              <?php if($transformer->price == maxPrice('price')){ ?>
-                <td style="color: red; font-weight: 700"><?= $transformer->name; ?> (самый дорогой розничный товар)</td>
-              <?php } elseif($transformer->wholesale_price == minPrice('wholesale_price')){ ?>
-                <td style="color: green; font-weight: 700"><?= $transformer->name; ?> (самый дешевый оптовый товар)</td>
-              <?php } else{ ?>
-                <td><?= $transformer->name; ?></td>
-              <?php } ?>
-              <!-- <td><?= $transformer->name; ?></td> -->
-              <td><?= $transformer->price; ?></td>
-              <td><?= $transformer->wholesale_price; ?></td>
-              <td><?= $transformer->quantity_in_stock1; ?></td>
-              <td><?= $transformer->quantity_in_stock2; ?></td>
-              <td><?= $transformer->country_of_origin; ?></td>
-              <td><?php if($transformer->quantity_in_stock1 + $transformer->quantity_in_stock2 < 20){echo 'Осталось мало!! Срочно докупите!!!';}  ?></td>
-            </tr>
-          <?php endforeach; ?>
-          </tbody>
-        </table>
       </div>
     </div>
   </div>

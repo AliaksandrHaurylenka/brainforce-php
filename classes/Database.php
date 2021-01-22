@@ -120,12 +120,16 @@ class Database{
   }
 
 
-  public function getColumn1($table, $column1, $min, $max, $column2, $quantity){
-    return $this->action_filter1("SELECT *", $table, $column1, $min, $max, $column2, $quantity);
-  }
+  // public function getColumn1($table, $column1, $min, $max, $column2, $quantity){
+  //   return $this->action_filter1("SELECT *", $table, $column1, $min, $max, $column2, $quantity);
+  // }
 
 
-  public function getColumn2($table, $column, $quantity){
-    return $this->action_filter2("SELECT *", $table, $column, $quantity);
+  // public function getColumn2($table, $column, $quantity){
+  //   return $this->action_filter2("SELECT *", $table, $column, $quantity);
+  // }
+
+  public function getPrice($table,$column, $price){
+    return $this->action('SELECT *', $table, [$column, '<', $price]);
   }
 }

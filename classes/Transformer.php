@@ -28,4 +28,9 @@ class Transformer {
   //   var_dump($col);
   // }
 
+
+  public function getPrice($table, $column, $price){
+    return $this->db->getPrice($table, $column, $price)->results();
+  }
+
 }
