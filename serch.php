@@ -3,12 +3,12 @@
     <strong>Показать товары, у которых</strong>
   </div>
 
-  <!-- <div class="form-group mb-2">
+  <div class="form-group mb-2">
     <select id="price" name="price" class="form-control">
-      <option value="price" selected>Розничная цена</option>
-      <option value="wholesale_price">Оптовая цена</option>
+      <option val="price" selected>Розничная цена</option>
+      <option val="wholesale_price">Оптовая цена</option>
     </select>
-  </div> -->
+  </div>
 
   <div class="form-group mb-2 ml-2">
     <strong>от</strong>

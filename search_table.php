@@ -18,7 +18,12 @@
 
       $transformer = new Transformer;
       // $transformers = $transformer->getPrice('transformers', 'price', $_POST['min']);
-      $transformers = $transformer->getBetweenPrice('transformers', 'price', $_POST['min'], $_POST['max']);
+      if($_POST['price']){
+        $transformers = $transformer->getBetweenPrice('transformers', 'price', $_POST['min'], $_POST['max']);
+      }else{
+        $transformers = $transformer->getBetweenPrice('transformers', 'wholesale_price', $_POST['min'], $_POST['max']);
+      }
+      
       require_once('helpers.php');
     ?>
     

@@ -68,8 +68,14 @@
       $("#filter").click(function(){
         let min_price = $("#min-price").val();
         let max_price = $("#max-price").val();
-        // $("#ajaxdata").load("search_table.php", {min: min_price});
-        $("#ajaxdata").load("search_table.php", {min: min_price, max: max_price});
+
+        if($("#price").val() == "price"){
+          let price = $(this).val();
+          $("#ajaxdata").load("search_table.php", {min: min_price, max: max_price, price: price});
+        }else{
+          let wholesale_price = $(this).val();
+          $("#ajaxdata").load("search_table.php", {min: min_price, max: max_price, wholesale_price: wholesale_price});
+        }
       })
       $("#refresh").click(function(){
         $("#ajaxdata").load("table.php");
