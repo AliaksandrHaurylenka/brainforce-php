@@ -30,16 +30,16 @@
     <strong>рублей и на складе </strong>
   </div>
 
-  <!-- <div class="form-group mb-2">
+  <div class="form-group mb-2">
     <select id="max_min" name="max_min" class="form-control">
-      <option value="max" selected>Более</option>
-      <option value="min">Менее</option>
+      <option val="max" selected>Более</option>
+      <option val="min">Менее</option>
     </select>
   </div>
 
   <div class="form-group mx-sm-3 mb-2">
     <input type="number" class="form-control" id="quantity" name="quantity" placeholder="20" required>
-  </div> -->
+  </div>
 
   <button type="button" id="filter" name="filter" class="btn btn-primary mb-2">Показать товары</button>
   <button type="button" name="refresh" id="refresh" class="btn btn-success mb-2 ml-2">Показать все товары</button>

@@ -65,13 +65,12 @@
 
 
     $(document).ready(function(){
-      // alert($("#price").val());
       $("#ajaxdata").load("table.php");
       $("#filter").click(function(){
         let min_price = $("#min-price").val();
         let max_price = $("#max-price").val();
         let price = $("#price").val();
-        
+
         $("#ajaxdata").load("search_table.php", {min: min_price, max: max_price, price: price});
       })
       $("#refresh").click(function(){
