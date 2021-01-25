@@ -18,9 +18,11 @@
 
       $transformer = new Transformer;
       // $transformers = $transformer->getPrice('transformers', 'price', $_POST['min']);
-      if($_POST['price']){
+      if($_POST['price'] == "Розничная цена"){
+        // var_dump($_POST['price']);
         $transformers = $transformer->getBetweenPrice('transformers', 'price', $_POST['min'], $_POST['max']);
-      }else{
+      }elseif($_POST['price'] == "Оптовая цена"){
+      // }else{
         $transformers = $transformer->getBetweenPrice('transformers', 'wholesale_price', $_POST['min'], $_POST['max']);
       }
       

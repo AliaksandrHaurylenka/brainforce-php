@@ -23,7 +23,7 @@
     
     <?php foreach ($transformers as $transformer): ?>
       <tr>          
-      <?php if($transformer->price == maxPrice('price')){ ?>
+        <?php if($transformer->price == maxPrice('price')){ ?>
           <td style="color: red; font-weight: 700"><?= $transformer->name; ?> (самый дорогой розничный товар)</td>
         <?php } elseif($transformer->wholesale_price == minPrice('wholesale_price')){ ?>
           <td style="color: green; font-weight: 700"><?= $transformer->name; ?> (самый дешевый оптовый товар)</td>

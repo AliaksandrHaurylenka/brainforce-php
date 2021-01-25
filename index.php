@@ -2,6 +2,7 @@
   // header('Location: http://brainforce-php.test');
   // header('Location: http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].'?success');
   // exit();
+  // error_reporting(E_ALL & ~E_NOTICE);
 
   require_once('init.php');
 
@@ -64,18 +65,14 @@
 
 
     $(document).ready(function(){
+      // alert($("#price").val());
       $("#ajaxdata").load("table.php");
       $("#filter").click(function(){
         let min_price = $("#min-price").val();
         let max_price = $("#max-price").val();
-
-        if($("#price").val() == "price"){
-          let price = $(this).val();
-          $("#ajaxdata").load("search_table.php", {min: min_price, max: max_price, price: price});
-        }else{
-          let wholesale_price = $(this).val();
-          $("#ajaxdata").load("search_table.php", {min: min_price, max: max_price, wholesale_price: wholesale_price});
-        }
+        let price = $("#price").val();
+        
+        $("#ajaxdata").load("search_table.php", {min: min_price, max: max_price, price: price});
       })
       $("#refresh").click(function(){
         $("#ajaxdata").load("table.php");

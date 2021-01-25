@@ -27,7 +27,7 @@
   </div>
 
   <div class="form-group mb-2 mr-2">
-    <strong>руббей и на складе </strong>
+    <strong>рублей и на складе </strong>
   </div>
 
   <!-- <div class="form-group mb-2">
